@@ -1,0 +1,42 @@
+body {
+    background: #FCEBE2;
+}
+
+h3  {
+    margin: 30px 0 30px 0px;
+}
+
+.wrapper {
+    width: 80vw;
+    margin: 0 10vw 0 10vw;
+}
+
+img {
+    max-width: 20vw;
+}
+
+.description {
+    list-style: none;
+    margin-top: 20px;
+    border-radius: 15px;
+    width: 30vw;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.description li:nth-last-of-type(2n) {
+    background: #F9F3F0;
+}
+
+.description li:nth-last-of-type(2n+1) {
+    background: #F2DED4;
+}
+
+p {
+    margin: 20px 0 20px 0;
+    padding: 20px;
+    background: #F1DDD3;
+    word-wrap: break-word;
+}
+
+
