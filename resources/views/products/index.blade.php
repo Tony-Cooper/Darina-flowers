@@ -4,30 +4,76 @@
     <link rel="stylesheet" href="{{ asset("css/allproducts.css") }}">
 @endsection
 
+@php
+    $title = '';
+
+    $title = (isset($category_title)) ? $category_title : 'Все товары';
+@endphp
+
 @section('title')
-    Все товары
+    Darina flowers - {{ $title }}
 @endsection
 
 @section('content')
-    <h1>Все товары</h1>
+    <h1>{{ $title }}</h1>
     <div class="wrapper">
-    @foreach($products as $el)
-        @php
-            $image = "";
-            if(count($el->images) > 0) {
-                $image = $el->images[0]['img'];
-            }
-            else {
-                $image = 'no_image.png';
-            }
-        @endphp
-            <a href="/products/{{ $el->id }}">
-                <div class="card">
-                    <img src="/img/{{ $image }}" alt="{{ $el->title }}">
-                    <h3>{{ $el->title }}</h3>
-                    <span>Цена: {{ $el->price }} грн.</span>
-                </div>
-            </a>
-    @endforeach
+        <div class="sort-by">
+            <button class="sort-button" data-order-by="price-low-high">От дешёвых к дорогим</button>
+            <button class="sort-button" data-order-by="price-high-low">От дорогих к дешёвым</button>
+            <button class="sort-button" data-order-by="name-A-Z">По имени А-Я</button>
+            <button class="sort-button" data-order-by="name-Z-A">По имени Я-А</button>
         </div>
+        <div class="product-list">
+            @foreach($products as $product)
+                @php
+                    $image = "";
+                    if(count($product->images) > 0) {
+                        $image = $product->images[0]['img'];
+                    }
+                    else {
+                        $image = 'no_image.png';
+                    }
+                @endphp
+                    <a href="/products/{{ $product->id }}">
+                        <div class="card">
+                            <img src="/img/{{ $image }}" alt="{{ $product->title }}">
+                            <h3>{{ $product->title }}</h3>
+                            <span>Цена: {{ $product->price }} грн.</span>
+                        </div>
+                    </a>
+            @endforeach
+        </div>
+    </div>
+    @php
+        if(isset($category->alias)) {
+            $url = route('showCategory', $category->alias);
+        } else {
+            $url = route('products.index');
+        }
+    @endphp
+@endsection
+
+@section('custom_js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready( function() {
+            $('.sort-button').click(function() {
+                let orderBy = $(this).data('order-by');
+                $.ajax({
+                    url: "{{ $url }}",
+                    type: "GET",
+                    data: {
+                        orderBy: orderBy
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: (data) => {
+                        $('.product-list').html(data);
+                    }
+                });
+            });
+        });
+
+    </script>
 @endsection

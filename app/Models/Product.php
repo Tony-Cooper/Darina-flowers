@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+
+    protected $casts = [
+        'id' => 'integer',
+    ];
+
     public function images() {
         return $this->hasMany(ProductImage::class);
     }

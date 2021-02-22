@@ -13,7 +13,7 @@ class RenameProductsCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::rename('products_categories', 'categories_products');
+        Schema::rename('products_categories', 'category_product');
     }
 
     /**
@@ -23,6 +23,6 @@ class RenameProductsCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::rename('categories_products', 'products_categories');
+        Schema::rename('category_product', 'products_categories');
     }
 }
