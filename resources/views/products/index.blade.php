@@ -43,6 +43,8 @@
                     </a>
             @endforeach
         </div>
+        @dd(request())
+        {{ $products->links() }}
     </div>
     @php
         if(isset($category->alias)) {
@@ -69,6 +71,13 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: (data) => {
+
+                        let pos = location.pathname.indexOf('?');
+                        let url = location.pathname.substring(pos, location.pathname.length);
+                        let newURL = url + '?';
+                        newURL += 'orderBy=' + orderBy;
+                        history.pushState({}, '', newURL);
+
                         $('.product-list').html(data);
                     }
                 });

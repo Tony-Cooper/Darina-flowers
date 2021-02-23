@@ -86,3 +86,24 @@ h1 {
     box-shadow: 0px 0px 50px -9px rgba(0,0,0,0.75);
     transition: 0.5s;
 }
+
+.pagination-wrapper {
+    -webkit-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.75);
+    display: flex;
+    padding: 20px;
+    width: 50vw;
+    margin: 20px 25vw;
+    justify-content: center;
+}
+
+.arrow, .number-of-page {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    padding: 10px;
+    margin: 5px;
+}
+

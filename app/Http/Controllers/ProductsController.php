@@ -10,10 +10,34 @@ use Illuminate\Support\Facades\DB;
 class ProductsController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
 
-        $products = Product::paginate(8);
+        $products_per_page = 8;
+
+        $products = Product::paginate($products_per_page);
+
+        if(isset($request->orderBy)) {
+            switch($request->orderBy) {
+                case 'price-low-high':
+                    $products = Product::orderBy('price')->paginate($products_per_page);
+                    break;
+                case 'price-high-low':
+                    $products = Product::orderBy('price', 'desc')->paginate($products_per_page);
+                    break;
+                case 'name-A-Z':
+                    $products = Product::orderBy('title')->paginate($products_per_page);
+                    break;
+                case 'name-Z-A':
+                    $products = Product::orderBy('title', 'desc')->paginate($products_per_page);
+                    break;
+
+            }
+        }
+
+        if($request->ajax()) {
+            return view('ajax/order-by')->with('products', $products)->render();
+        }
 
         return view('products/index')->with('products', $products);
     }
