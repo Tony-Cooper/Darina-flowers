@@ -69,13 +69,15 @@ class ProductsController extends Controller
         }
 
         if($request->ajax()) {
-            return view('ajax/order-by')->with('products', $products)->render();
+            return view('ajax/order-by')->with([
+                'products' => $products->render(),
+            ]);
         }
 
         return view('products/index')->with([
             'products' => $products,
             'category_title' => $cat_title,
-            'category' => $current_category
+            'category' => $current_category,
         ]);
     }
 
