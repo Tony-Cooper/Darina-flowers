@@ -57,12 +57,10 @@
 @endsection
 
 @section('custom_js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready( function() {
             $('.sort-button').click(function() {
                 let orderBy = $(this).data('order-by');
-
                 $.ajax({
                     url: "{{ $url }}",
                     type: "GET",

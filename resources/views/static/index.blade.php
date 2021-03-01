@@ -12,6 +12,7 @@
         <li class="not-completed">Популярные товары на главной</li>
         <li class="completed">Категории(many to many)</li>
         <li class="completed">Характеристики товаров</li>
+        <li class="completed">Страница с товаром, описание, характеристики, система фотографий</li>
         <li class="completed">Сортировка товаров</li>
         <li class="completed">Пагинация</li>
         <li class="not-completed">фильтры для товаров</li>
@@ -19,7 +20,7 @@
         <li class="not-completed">Поиск товаров</li>
         <li>
             <ul class="sub-list not-completed">Личный кабинет
-                <li class="not-completed">Авторизация</li>
+                <li class="completed">Авторизация</li>
                 <li class="not-completed">Авторизация через гугл, фейсбук, и т.д.</li>
                 <li class="not-completed">Информация о статусе заказа</li>
                 <li class="not-completed">Список всех заказов</li>
@@ -27,8 +28,6 @@
         </li>
         <li class="not-completed">Отслеживание заказа по номеру заказа</li>
         <li class="not-completed">Форма обратной связи(SMTP)</li>
-        <li class="not-completed">Система оплаты</li>
-        <li class="not-completed">Страница с товаром, описание, характеристики, система фотографий</li>
         <li>
             <ul class="sub-list not-completed">Админка
                 <li class="not-completed">Добавление товаров</li>
@@ -42,6 +41,7 @@
         </li>
         <li class="not-completed">Уведомления о новых заказах(Продавец, SMTP)</li>
         <li class="not-completed">Уведомления об изменении статуса заказа(Покупатель, SMTP)</li>
+        <li class="not-completed">Система оплаты</li>
         <li class="not-completed">Статические страницы</li>
 
     </ul>

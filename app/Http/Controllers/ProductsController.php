@@ -70,8 +70,8 @@ class ProductsController extends Controller
 
         if($request->ajax()) {
             return view('ajax/order-by')->with([
-                'products' => $products->render(),
-            ]);
+                'products' => $products
+            ])->render();
         }
 
         return view('products/index')->with([

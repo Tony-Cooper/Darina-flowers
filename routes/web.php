@@ -8,4 +8,8 @@ Route::get('/', [StaticController::class, 'index']);
 
 Route::resource('products', 'App\Http\Controllers\ProductsController');
 
-Route::get('/{category}', [ProductsController::class, 'showCategory'])->name('showCategory');
+Route::get('/category/{category}', [ProductsController::class, 'showCategory'])->name('showCategory');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
